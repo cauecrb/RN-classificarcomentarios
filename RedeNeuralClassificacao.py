@@ -46,11 +46,12 @@ def custom_standardization(input_data):
         stripped_html, "[%s]" % re.escape(string.punctuation), ""
     )
 
-#constantes para informar o maximo de dados para o dicionario, usar lotes para comparção e padronizar
-#o tamanho dos comentários
+#constantes para informar o maximo de dados para o dicionario, usar lotes para comparção, padronizar
+#o tamanho dos comentários e as epocas
 max_features = 10000
 embedding_dim = 128
 sequence_length = 512
+epochs = 5
 
 #iremos transformar os comentarios em layers
 vectorize_layer = TextVectorization(
@@ -109,3 +110,27 @@ modelo.fit(train_ds, validation_data=val_ds, epochs=epochs)
 
 #validando o modelo com os dados de teste
 modelo.evaluate(test_ds)
+
+'''
+agora que a rede ja esta treinando e mostrando sua eficacia, fazer um modulo para utilizar os resultados
+em versoes futuras, sera separada esta parte do código
+'''
+
+#codigo pego como base a documentação da biblioteca keras
+
+#recebendo uma string de entrada
+inputs = tf.keras.Input(shape=(1,), dtype="string")
+# transformando a string em uma lista de indice de vocabularios
+indices = vectorize_layer(inputs)
+# transformando os vocabularios em predicts
+outputs = modelo(indices)
+
+#aqui usamos a string que foi tratada logo acima para ser classificada com nosso modelo ja treinado
+end_to_end_model = tf.keras.Model(inputs, outputs)
+end_to_end_model.compile(
+    loss="binary_crossentropy", optimizer="rmsprop", metrics=["accuracy"]
+)
+
+# usando um arquivo texto dentro da pasta classificar, para ser classificado
+result = end_to_end_model.evaluate(dados_classificar)
+print(result)
