@@ -88,6 +88,10 @@ Agora vamos criar a estrutura da rede com as funçoes de ativação
 '''
 #criar um modelo embedding que recebe os imputs
 model = layers.Embedding(max_features, embedding_dim)(inputs)
+#como primeira camada, uma camada de convolução
+model = layers.Conv1D(128, 8, padding="valid", activation="relu", strides=3)(model)
+#camada de pool max para auxiliar no aprendizado
+model = layers.GlobalMaxPooling1D()(model)
 #2 hidden layers com 16 perceptrons cada
 model = layers.Dense(16, activation='relu')(model)
 model = layers.Dense(16, activation='relu')(model)
@@ -98,6 +102,8 @@ predictions = layers.Dense(1, activation="sigmoid", name="predictions")(model)
 #este objeto  que sera usado para treino e validaçao
 modelo = tf.keras.Model(inputs, predictions)
 
+#compilando o modelo
+modelo.compile(loss="binary_crossentropy", optimizer="rmsprop", metrics=["accuracy"])
 #usando o treinamento fit
 modelo.fit(train_ds, validation_data=val_ds, epochs=epochs)
 
