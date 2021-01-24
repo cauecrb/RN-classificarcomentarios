@@ -111,6 +111,10 @@ modelo.fit(train_ds, validation_data=val_ds, epochs=epochs)
 #validando o modelo com os dados de teste
 modelo.evaluate(test_ds)
 
+#salvando o modelo
+keras.models.save_model(modelo, 'model.h5')
+print('modelo salvo')
+
 '''
 agora que a rede ja esta treinando e mostrando sua eficacia, fazer um modulo para utilizar os resultados
 em versoes futuras, sera separada esta parte do código
