@@ -1,4 +1,4 @@
-# Rde Neural para classificar comentarios, como positivos ou negativos, de Filmes
+# Rede Neural para classificar comentarios, como positivos ou negativos, de Filmes
 
 Rede neural desenvolvida com TensorFlow e Keras, para classificar comentario como positivos ou negativos utilizando a base Imdb. 
 
