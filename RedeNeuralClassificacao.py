@@ -17,14 +17,14 @@ batch_size = 32
 dados_treino = tf.keras.preprocessing.text_dataset_from_directory(
     "treino/train",
     batch_size=batch_size,
-    validation_split=0.1,
+    validation_split=0.4,
     subset="training",
     seed=1217,
 )
 dados_validacao = tf.keras.preprocessing.text_dataset_from_directory(
     "treino/train",
     batch_size=batch_size,
-    validation_split=0.1,
+    validation_split=0.4,
     subset="validation",
     seed=1217,
 )
