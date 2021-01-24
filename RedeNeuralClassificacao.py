@@ -86,3 +86,20 @@ inputs = tf.keras.Input(shape=(None,), dtype="int64")
 '''
 Agora vamos criar a estrutura da rede com as funçoes de ativação
 '''
+#criar um modelo embedding que recebe os imputs
+model = layers.Embedding(max_features, embedding_dim)(inputs)
+#2 hidden layers com 16 perceptrons cada
+model = layers.Dense(16, activation='relu')(model)
+model = layers.Dense(16, activation='relu')(model)
+#uma cama prediction
+predictions = layers.Dense(1, activation="sigmoid", name="predictions")(model)
+
+#passando o modelo para novo objeto com os imputs e prediction
+#este objeto  que sera usado para treino e validaçao
+modelo = tf.keras.Model(inputs, predictions)
+
+#usando o treinamento fit
+modelo.fit(train_ds, validation_data=val_ds, epochs=epochs)
+
+#validando o modelo com os dados de teste
+modelo.evaluate(test_ds)
