@@ -135,6 +135,18 @@ end_to_end_model.compile(
     loss="binary_crossentropy", optimizer="rmsprop", metrics=["accuracy"]
 )
 
+#para testar outra avaliação, troque o arquivo na pasta classi e rode esta parte do codigo ate o final
+# novamente
+dados_classificar = tf.keras.preprocessing.text_dataset_from_directory(
+    "treino/classificar", batch_size=batch_size
+)
+
+
 # usando um arquivo texto dentro da pasta classificar, para ser classificado
 result = end_to_end_model.evaluate(dados_classificar)
-print(result)
+result = end_to_end_model.predict(dados_classificar)
+if result[0:1,] > 0.5:
+    print(1)
+else:
+    print(-1)
+
