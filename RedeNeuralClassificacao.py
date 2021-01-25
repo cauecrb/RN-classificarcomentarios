@@ -143,7 +143,6 @@ dados_classificar = tf.keras.preprocessing.text_dataset_from_directory(
 
 
 # usando um arquivo texto dentro da pasta classificar, para ser classificado
-result = end_to_end_model.evaluate(dados_classificar)
 result = end_to_end_model.predict(dados_classificar)
 if result[0:1,] > 0.5:
     print(1)

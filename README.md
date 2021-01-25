@@ -2,7 +2,6 @@
 
 Rede neural desenvolvida com TensorFlow e Keras, para classificar comentario como positivos ou negativos utilizando a base Imdb. 
 
-![](cadastrousuarioinsomnia.png)
 
 ## bibliotecas
 
@@ -32,7 +31,9 @@ a rede tambem possui um modulo para validação que utiliza a pasta classi, nest
 
 após instalar as dependências e colocar os arquivos nos diretorios correspondentes, rode o arquivo RdeNeuralClassificacao.py.
 ele ira mostrar a convergencia e os erros apos o treino, tambem gerará um arquivo model.h5, que contem o modelo da rede.
-
+Para  poder efetuar a classificaçao de um comentario, a rede deve ter aprendido previamente, o arquivo desejado tem que ser colocado em:
+treino/classificar/classi
+Após colocar o arquivo que contém o comentario desejado, deve-se rodar o trecho de codigo indicado no código.
 
 ## Sobre autor
 Cauê Rafael Burgardt crburgardt@gmail.com. =D
