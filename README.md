@@ -37,3 +37,44 @@ Após colocar o arquivo que contém o comentario desejado, deve-se rodar o trech
 
 ## Sobre autor
 Cauê Rafael Burgardt crburgardt@gmail.com. =D
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# Neural network to classify film reviews as positive or negative
+
+Neural network developed with TensorFlow and Keras, to classify comments as positive or negative using the Imdb base.
+
+
+## libraries
+
+keras and TensorFlow
+
+to install the api and exutar, use the following command:
+`` bash
+pip install keras
+``
+`` bash
+pip instal tensorflow
+``
+
+
+### putting the files for training and testing
+
+download the training and test files at http://ai.stanford.edu/~amaas/data/sentiment/
+the location where the files must be placed respects the zip folder structure, inside the training folder.
+ex: training / train / pos
+ for positive training files
+
+the network also has a module for validation that uses the classi folder, in this directory comments must be placed q will be classified after the neural network is trained.
+
+
+
+## using
+
+after installing the dependencies and placing the files in the corresponding directories, run the file RdeNeuralClassificacao.py.
+it will show convergence and errors after training, it will also generate a model.h5 file, which contains the network model.
+To be able to classify a comment, the network must have previously learned, the desired file must be placed in:
+training / classifying / classi
+After placing the file that contains the desired comment, you must run the code section indicated in the code.
+
+## About author
+Cauê Rafael Burgardt crburgardt@gmail.com. = D
